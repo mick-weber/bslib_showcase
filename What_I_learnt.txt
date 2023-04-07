@@ -1,0 +1,33 @@
+1) bs_theme() can be cleanly defined in a specific file, then called in the theme argument of the main layout function
+
+2) thematic::thematic_shiny() can be used (at least for ggplot2) to style the background/foreground/other colors of a plot based on fg/bg.
+	We can even specify a bs_theme() component for a color such as :
+		thematic::thematic_shiny(bg = bslib::bs_get_variables(theme = main_theme, varnames = "fg"))
+
+3) More generally, we can retrieve any {bslib} variable with bslib::bs_get_variables() 
+
+4) Buttons work with accent colors defined in their 'class' argument. We can add more than one class, e.g. by adding a size item :
+	 shiny::actionButton("secondary_lg", "A button modded", class = "btn-secondary btn-lg")
+	See more here : https://getbootstrap.com/docs/4.0/components/buttons/
+
+5) SCSS : target a selector which has two classes in this way :  .class1.class2{...}
+	See more here : https://unused-css.com/blog/css-multiple-class-selectors/
+
+6) SCSS : target multiple classes at once with :   .class1, .class2 {...}
+
+7) SCSS : target nested classes (see https://developer.chrome.com/articles/css-nesting/) 
+
+.nesting {
+  color: hotpink;
+
+  > .is {
+    color: rebeccapurple;
+
+    > .awesome {
+      color: deeppink;
+    }
+  }
+}
+
+
+8) CSS : access highlight values for selectizeInput() with : .selectize-dropdown-content .active {...}

@@ -9,8 +9,45 @@ app_ui <- function(request) {
     # Leave this function for adding external resources
     golem_add_external_resources(),
     # Your application UI logic
-    fluidPage(
-      h1("bslibShowcase")
+    navbarPage(
+      h1("Navbar!"),
+      theme = main_theme,
+      tabPanel(
+        "Plot",
+        sidebarLayout(
+
+          sidebarPanel(radioButtons(
+            "select_species", "Species",
+            c("Setosa" = "setosa",
+              "Versicolor" = "versicolor",
+              "Virginica" = "virginica")
+          )),
+          mainPanel(plotOutput("plot"))
+        )
+      ),
+      navbarMenu(
+        title = "Ressources",
+        tabPanel(
+          "Options test",
+          selectizeInput(
+            "test",
+            "Test :",
+            c(
+              "Label1" = "label1",
+              "Label2" = "label2",
+              "Label2" = "label3"
+            )
+          )
+        ),
+        tabPanel(
+          "Action buttons", # https://getbootstrap.com/docs/4.0/components/buttons/
+          actionButton("secondary_lg", "Sec modded lg", class = "btn-secondary btn-lg"),
+          actionButton("secondary_sm", "Secondary sm", class = "btn-secondary btn-sm"),
+          actionButton("info_sm", "Info sm", class = "btn-info btn-sm"),
+          actionButton("link_active", "Link active", class = "btn-primary"),
+          actionButton("link_disabled", "Link disabled", class = "btn-primary disabled")
+        )
+      )
     )
   )
 }

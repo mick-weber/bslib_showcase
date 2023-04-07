@@ -6,4 +6,18 @@
 #' @noRd
 app_server <- function(input, output, session) {
   # Your application server logic
+
+  thematic::thematic_shiny(bg = bslib::bs_get_variables(theme = main_theme,
+                                                        varnames = "fg"))
+
+  output$plot <- renderPlot(
+
+    iris |>
+      dplyr::filter(Species == input$select_species) |>
+      ggplot2::ggplot()+
+      ggplot2::geom_bar(ggplot2::aes(Species))
+
+  )
+
 }
+

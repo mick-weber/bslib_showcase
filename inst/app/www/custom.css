@@ -1,0 +1,22 @@
+h1 {
+  color: cyan;
+}
+
+/*Target only buttons with secondary class AND lg class*/
+.btn-secondary.btn-lg {
+  background-color: red;
+}
+
+/*Target only buttons with secondary class alone (less specific, overriden by previous rule)*/
+.btn-secondary {
+  background-color: blue;
+}
+
+/* SelectizeInput highlight colors (nested because we can) */
+.selectize-dropdown-content {
+  background-color: cyan;
+}
+
+.selectize-dropdown-content .active {
+  background-color: yellow;
+}
