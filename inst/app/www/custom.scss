@@ -25,7 +25,32 @@ h1{
 }
 
 
+/* test toggle text for sidebar collapse feature */
 
 
+.bslib-sidebar-layout>.collapse-toggle[aria-expanded="true"]{
+  background-color:black;
+  color:lightgrey;
+  background-image:none;
+  &:after{
+    background-image: none;
+    content: "Fermer";
+    position: relative;
+    transform: rotate(0deg);
+    left: 20px;
+}
+}
 
+.bslib-sidebar-layout>.collapse-toggle[aria-expanded="false"]{
+  background-color:black;
+  color:darkgrey;
+  &:after{
+    background-image: none;
+    content: "Ouvrir";
+    position:relative;
+    bottom:25px;
+    right:5px;
+
+  }
+}
 

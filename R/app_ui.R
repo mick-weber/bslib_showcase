@@ -9,25 +9,20 @@ app_ui <- function(request) {
     # Leave this function for adding external resources
     golem_add_external_resources(),
     # Your application UI logic
-    navbarPage(
-      h1("Navbar!"),
+    bslib::page_navbar(
+      title = ("page_navbar title"),
       theme = main_theme,
-      tabPanel(
-        "Plot",
-        sidebarLayout(
-
-          sidebarPanel(radioButtons(
-            "select_species", "Species",
-            c("Setosa" = "setosa",
-              "Versicolor" = "versicolor",
-              "Virginica" = "virginica")
-          )),
-          mainPanel(plotOutput("plot"))
-        )
-      ),
-      navbarMenu(
+      sidebar = bslib::sidebar(position = "left",
+                               width = "15%",
+        radioButtons(
+          "select_species", "Species",
+          c("Setosa" = "setosa",
+            "Versicolor" = "versicolor",
+            "Virginica" = "virginica")
+        )), # End sidebar()
+      bslib::nav_menu(
         title = "Ressources",
-        tabPanel(
+        bslib::nav(
           "Options test",
           selectizeInput(
             "test",
@@ -38,8 +33,10 @@ app_ui <- function(request) {
               "Label2" = "label3"
             )
           )
-        ),
-        tabPanel(
+        ),# End nav_menu()
+        bslib::nav("Hello 1"),
+        bslib::nav("Hello 2"),
+        bslib::nav(
           "Action buttons", # https://getbootstrap.com/docs/4.0/components/buttons/
           actionButton("secondary_lg", "Sec modded lg", class = "btn-secondary btn-lg"),
           actionButton("secondary_sm", "Secondary sm", class = "btn-secondary btn-sm"),
