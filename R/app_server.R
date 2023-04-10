@@ -7,8 +7,14 @@
 app_server <- function(input, output, session) {
   # Your application server logic
 
+  bslib::bs_themer() # Live theming
+
   thematic::thematic_shiny(bg = bslib::bs_get_variables(theme = main_theme,
                                                         varnames = "fg"))
+
+  output$selected_species <- renderText({
+    paste0("You have selected...", input$select_species)
+  })
 
   output$plot <- renderPlot(
 

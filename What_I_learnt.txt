@@ -31,3 +31,17 @@
 
 
 8) CSS : access highlight values for selectizeInput() with : .selectize-dropdown-content .active {...}
+
+9) Navigation BSLIB & conditionalPanel : using ConditionalPanel's JS condition (e.g. condition = "input.IDNAV == 'nav_item_1') we need
+	to refer to the most direct parent id of the tab/nav element we'd like to target for IDNAV
+
+	Say we have : ui <- page_navbar(id = "tabx", nav_menu(nav(value = "nav_1"), nav(value = "nav_2")) 
+		Using a conditionalPanel we'd use this to target the 2nd nav_2 : condition = "input.tabx == "nav_2")
+
+	Now, if we have an intermediary navigation "holder" such as nav_pills_list :
+		ui <- page_navbar(id = "tabx", nav_pill_list(id = "navsPills", nav(value = "nav_1"), nav(value = "nav_2")) 
+		Using a conditionalPanel we'd use this to target the 2nd nav_2 : condition = "input.navsPills == "nav_2")
+
+	Note : nav() items and other nav holders don't have ids arguments but values arguments. Not sure why and how this impacts the usual workflow
+
+10) Use bslib::bs_themer() inside server to leverage the live theming options
